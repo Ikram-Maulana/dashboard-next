@@ -1,5 +1,6 @@
 import ThemeToggle from "@/components/theme-toggle";
 import { Button } from "@/ui/button";
+import { SignedIn, SignedOut, useSession } from "@clerk/nextjs";
 import Link from "next/link";
 import { FC } from "react";
 
@@ -13,6 +14,16 @@ const Menubar: FC = () => {
       <Button variant="secondary" asChild>
         <Link href="/about-us">About Us</Link>
       </Button>
+      <SignedOut>
+        <Button variant="secondary" asChild>
+          <Link href="/login">Login</Link>
+        </Button>
+      </SignedOut>
+      <SignedIn>
+        <Button variant="secondary" asChild>
+          <Link href="/dashboard">Dashboard</Link>
+        </Button>
+      </SignedIn>
     </div>
   );
 };
