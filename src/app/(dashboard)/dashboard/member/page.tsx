@@ -1,3 +1,4 @@
+import Membership from "@/components/dashboard/membership";
 import Menubar from "@/components/dashboard/menubar";
 import Greetings from "@/components/greetings";
 import { OrganizationSwitcher, UserButton, currentUser } from "@clerk/nextjs";
@@ -18,34 +19,43 @@ const page: FC = async () => {
   }
 
   return (
-    <div className="container flex flex-col items-center justify-center h-screen max-w-5xl dark:text-slate-50">
-      <div className="mb-6">
-        <UserButton
+    <div className="container flex items-center justify-center max-w-5xl dark:text-slate-50">
+      <div className="flex flex-col items-center justify-center mt-24">
+        <div className="mb-6">
+          <UserButton
+            appearance={{
+              elements: {
+                avatarBox: {
+                  width: 70,
+                  height: 70,
+                },
+              },
+            }}
+            afterSignOutUrl="/"
+          />
+        </div>
+
+        <Greetings />
+
+        <p className="my-3 leading-7 text-center">
+          This is non sensitive dashboard page for everyone
+        </p>
+
+        <OrganizationSwitcher
           appearance={{
             elements: {
-              avatarBox: {
-                width: 70,
-                height: 70,
-              },
+              organizationSwitcherTrigger:
+                "dark:bg-slate-50 p-4 flex justify-center items-center rounded-lg",
             },
           }}
-          afterSignOutUrl="/"
         />
-      </div>
-      <Greetings />
-      <p className="my-3 leading-7 text-center">
-        This is non sensitive dashboard page for everyone
-      </p>
-      <OrganizationSwitcher
-        appearance={{
-          elements: {
-            organizationSwitcherTrigger:
-              "dark:bg-slate-50 p-4 flex justify-center items-center rounded-lg",
-          },
-        }}
-      />
 
-      <Menubar />
+        <Menubar />
+
+        <div className="w-full mt-6">
+          <Membership />
+        </div>
+      </div>
     </div>
   );
 };

@@ -15,7 +15,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html
         lang="en"
-        className={cn("bg-white text-slate-900 antialiased", inter.className)}
+        className={cn(
+          "bg-white text-slate-900 antialiased overflow-y-scroll",
+          inter.className
+        )}
       >
         <body className="min-h-screen antialiased bg-slate-50 dark:bg-slate-900">
           <Providers>
