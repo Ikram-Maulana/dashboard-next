@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 const page: FC = () => {
   return (
     <div className="container flex flex-col items-center justify-center h-screen max-w-5xl dark:text-slate-50">
-      <h1 className="text-4xl font-extrabold tracking-tight scroll-m-20 lg:text-5xl">
+      <h1 className="text-4xl font-extrabold tracking-tight text-center scroll-m-20 lg:text-5xl">
         About Us Page
       </h1>
-      <p className="mt-3 leading-7">
+      <p className="mt-3 leading-7 text-center">
         This is the about us page of Dashboard Next
       </p>
 
