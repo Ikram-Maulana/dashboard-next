@@ -1,17 +1,14 @@
-"use client";
+import { currentUser } from "@clerk/nextjs";
+import { FC } from "react";
 
-import { useUser } from "@clerk/nextjs";
-
-export default function Greetings() {
-  const { isLoaded, isSignedIn, user } = useUser();
-
-  if (!isLoaded || !isSignedIn) {
-    return null;
-  }
+const greetings: FC = async () => {
+  const user = await currentUser();
 
   return (
-    <h1 className="text-4xl font-extrabold tracking-tight scroll-m-20 lg:text-5xl">
-      Hi, {user.fullName?.replace(/\b\w/g, (l) => l.toUpperCase())}
+    <h1 className="text-4xl font-extrabold tracking-tight text-center scroll-m-20 lg:text-5xl">
+      Hi, {user?.firstName} {user?.lastName}
     </h1>
   );
-}
+};
+
+export default greetings;
