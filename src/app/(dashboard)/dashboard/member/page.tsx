@@ -1,4 +1,5 @@
 import Membership from "@/components/dashboard/membership";
+import StoreMembership from "@/components/dashboard/membership/store";
 import Menubar from "@/components/dashboard/menubar";
 import Greetings from "@/components/greetings";
 import { OrganizationSwitcher, UserButton, currentUser } from "@clerk/nextjs";
@@ -41,14 +42,17 @@ const page: FC = async () => {
           This is non sensitive dashboard page for everyone
         </p>
 
-        <OrganizationSwitcher
-          appearance={{
-            elements: {
-              organizationSwitcherTrigger:
-                "dark:bg-slate-50 p-4 flex justify-center items-center rounded-lg",
-            },
-          }}
-        />
+        <div className="flex items-center justify-center gap-2">
+          <OrganizationSwitcher
+            appearance={{
+              elements: {
+                organizationSwitcherTrigger:
+                  "dark:bg-slate-50 p-2 flex justify-center items-center rounded-lg",
+              },
+            }}
+          />
+          <StoreMembership />
+        </div>
 
         <Menubar />
 

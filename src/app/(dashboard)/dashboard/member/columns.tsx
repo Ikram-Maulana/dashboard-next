@@ -1,8 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { MembershipType } from "@/types/dashboard/membership";
-import { ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
 
 const createActionsColumnType = z.object({

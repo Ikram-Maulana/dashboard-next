@@ -1,4 +1,5 @@
 import Providers from "@/components/providers";
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -23,6 +24,7 @@ export default function RootLayout({
         <body className="min-h-screen antialiased bg-slate-50 dark:bg-slate-900">
           <Providers>
             <main>{children}</main>
+            <Toaster />
           </Providers>
         </body>
       </html>
