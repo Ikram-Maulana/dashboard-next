@@ -2,6 +2,7 @@
 
 import { useToast } from "@/components/ui/use-toast";
 import { detailMembership } from "@/helpers/detail-membership";
+import { updateMembership } from "@/helpers/update-membership";
 import { cn } from "@/lib/utils";
 import { Button } from "@/ui/button";
 import {
@@ -47,7 +48,17 @@ export default function DetailMembership({ id }: { id: string }) {
   });
   const [isOpen, setIsOpen] = useState(false);
   const { data, isLoading, error } = detailMembership(id, isOpen);
+  const {
+    isSuccess: isUpdateSuccess,
+    mutate: updateMutate,
+    isLoading: isUpdateLoading,
+    isError: isUpdateError,
+  } = updateMembership();
   const { toast } = useToast();
+
+  const onUpdateHandler = (values: z.infer<typeof formSchema>) => {
+    updateMutate({ id, ...values });
+  };
 
   useEffect(() => {
     if (data) {
@@ -64,7 +75,25 @@ export default function DetailMembership({ id }: { id: string }) {
       form.reset();
       setIsOpen(false);
     }
-  }, [data, error, form]);
+  }, [data, error, form, toast]);
+
+  useEffect(() => {
+    if (isUpdateSuccess) {
+      toast({
+        title: "Success",
+        description: "Membership updated successfully",
+      });
+      setIsOpen(false);
+    }
+
+    if (isUpdateError) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Something went wrong",
+      });
+    }
+  }, [isUpdateSuccess, isUpdateError, toast]);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -81,7 +110,10 @@ export default function DetailMembership({ id }: { id: string }) {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={() => {}} className="space-y-8">
+          <form
+            onSubmit={form.handleSubmit(onUpdateHandler)}
+            className="space-y-8"
+          >
             <FormField
               control={form.control}
               name="name"
@@ -117,8 +149,8 @@ export default function DetailMembership({ id }: { id: string }) {
               )}
             />
             <DialogFooter>
-              <Button type="submit" disabled={isLoading}>
-                {isLoading ? (
+              <Button type="submit" disabled={isLoading || isUpdateLoading}>
+                {isLoading || isUpdateLoading ? (
                   <LoaderIcon className="w-4 h-4 mr-2 animate-spin" />
                 ) : null}
                 Update

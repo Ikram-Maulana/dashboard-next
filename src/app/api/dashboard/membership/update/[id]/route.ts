@@ -24,7 +24,7 @@ export const PUT = async (
     const { name, address } = apiRequestValidator.parse(body);
     const membership = await db.membership.update({
       where: {
-        id: id,
+        id: parseInt(id.toString()),
       },
       data: {
         name,
