@@ -1,4 +1,4 @@
-import { MembershipType } from "@/types/dashboard/membership";
+import { MembershipType } from "@/lib/validator/dashboard/membership/membership";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
