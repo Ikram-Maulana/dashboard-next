@@ -12,7 +12,8 @@ import { FC } from "react";
 
 export const metadata: Metadata = {
   title: "Dashboard Next | Dashboard Admin",
-  description: "Dashboard Next is a project learning how to use Clerk.dev",
+  description:
+    "Dashboard Next is a project learning how to make a dashboard with CRUD using Next.js",
 };
 
 const page: FC = async () => {
