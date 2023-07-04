@@ -7,11 +7,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { useEffect } from "react";
 
-export const metadata: Metadata = {
-  title: "Dashboard Next | Login",
-  description: "Dashboard Next is a project learning how to use Clerk.dev",
-};
-
 export default function Page() {
   useEffect(() => {
     const interval = setInterval(() => {
