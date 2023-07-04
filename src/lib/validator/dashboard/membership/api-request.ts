@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const apiRequestValidator = z.object({
-  id: z.number().optional(),
   name: z.string().min(3).max(255),
   address: z.string().min(3).max(255),
 });
