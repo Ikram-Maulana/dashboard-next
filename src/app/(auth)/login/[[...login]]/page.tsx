@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/button";
 import { SignIn } from "@clerk/nextjs";
 import { ChevronLeftIcon } from "lucide-react";
 import { Metadata } from "next";

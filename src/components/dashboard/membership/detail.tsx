@@ -1,6 +1,6 @@
 "use client";
 
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/ui/use-toast";
 import { detailMembership } from "@/helpers/detail-membership";
 import { updateMembership } from "@/helpers/update-membership";
 import { cn } from "@/lib/utils";
