@@ -9,7 +9,7 @@ export const GET = async (
     params,
   }: {
     params: {
-      id: number;
+      id: string;
     };
   }
 ) => {

@@ -1,6 +1,7 @@
 "use client";
 
 import Delete from "@/components/dashboard/membership/delete";
+import DetailMembership from "@/components/dashboard/membership/detail";
 import { Button } from "@/ui/button";
 import { z } from "zod";
 
@@ -35,15 +36,7 @@ export const columns = [
 
       return (
         <div className="flex items-center space-x-2">
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => {
-              alert(`Edit ${member.name}`);
-            }}
-          >
-            Edit
-          </Button>
+          <DetailMembership id={member.id} />
           <Delete id={member.id} name={member.name} />
         </div>
       );
